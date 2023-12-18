@@ -9,7 +9,7 @@ I’ve been learning to code for 2 years, after switching careers. I started wit
 * 🌍  I'm based in Japan, Miyazaki
 * 🖥️  See my portfolio at [My Portfolio](http://h-ymt.com)
 * ✉️  You can contact me at [y.handai1272@gmail.com](mailto:y.handai1272@gmail.com)
-* 🧠  I'm learning Astro, Next.js
+* 🔥  I'm learning Astro, Next.js
 * ⚡  I'm looking for a new job
 
 ### Skills
