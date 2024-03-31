@@ -4,7 +4,7 @@ Hi 👋 My name is Yamato Handai
 Web Developer
 -------------
 
-I’ve been learning to code for 2 years, after switching careers. I started with HTML, CSS, JavaScript. Recently, I have been learning to build websites using frameworks such as React (Next.js) and Astro.
+I’ve been learning to code for 3 years, after switching careers. I started with HTML, CSS, JavaScript. Recently, I have been learning to build websites using frameworks such as React (Next.js) and Astro.
 
 * 🌍  I'm based in Japan, Miyazaki
 * 🖥️  See my portfolio at [My Portfolio](http://h-ymt.com)
