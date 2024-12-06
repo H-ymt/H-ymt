@@ -1,4 +1,4 @@
-Hi 👋 My name is Yamato Handai
+👋 Yamato Handai
 ==============================
 
 Web Developer
