@@ -10,7 +10,6 @@ I’ve been learning to code for 3 years, after switching careers. I started wit
 * 🖥️  See my portfolio at [My Portfolio](https://devymt.com/)
 * ✉️  You can contact me at [y.handai1272@gmail.com](mailto:y.handai1272@gmail.com)
 * 🔥  I'm learning Astro, Next.js
-* ⚡  I'm looking for a new job
 
 ### Skills
 
