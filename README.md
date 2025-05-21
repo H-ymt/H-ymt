@@ -1,4 +1,4 @@
-Web Developer
+Frontend Developer
 -------------
 
 I’ve been learning to code for 4 years, after switching careers. I started with HTML, CSS, JavaScript. Recently, I have been learning to build websites using frameworks such as React (Next.js) and Astro.
