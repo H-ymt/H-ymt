@@ -6,7 +6,6 @@ I’ve been learning to code for 4 years, after switching careers. I started wit
 * 🌍  I'm based in Japan, Miyazaki
 * 🖥️  See my portfolio at [My Portfolio](https://devymt.com/)
 * ✉️  You can contact me at [y.handai1272@gmail.com](mailto:y.handai1272@gmail.com)
-* 🔥  I'm learning Astro, Next.js
 
 ### Skills
 
