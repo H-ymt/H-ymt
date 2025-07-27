@@ -4,7 +4,7 @@ Frontend Developer
 I’ve been learning to code for 4 years, after switching careers. I started with HTML, CSS, JavaScript. Recently, I have been learning to build websites using frameworks such as React (Next.js) and Astro.
 
 * 🌍  I'm based in Japan, Miyazaki
-* 🖥️  See my portfolio at [My Portfolio](https://devymt.com/)
+* 🖥️  See my personal Website at [https://devymt.com/](https://devymt.com/)
 * ✉️  You can contact me at [y.handai1272@gmail.com](mailto:y.handai1272@gmail.com)
 
 ### Skills
