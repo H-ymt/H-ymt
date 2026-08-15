@@ -1,0 +1,266 @@
+---
+const pathname = Astro.url.pathname;
+
+const items = [
+  { name: "Home", link: "/" },
+  { name: "Note", link: "/note" },
+  { name: "Contact", link: "/contact" },
+  { name: "Projects", link: "https://portfolio.h-ymt.dev/" },
+  { name: "Resume", link: "https://portfolio.h-ymt.dev/resume" },
+];
+---
+
+<nav class="nav" aria-label="Primary">
+  <button
+    class="hamburger"
+    type="button"
+    id="menu-toggle"
+    aria-expanded="false"
+    aria-controls="primary-menu"
+  >
+    <span class="sr-only">Menu</span>
+    <span class="hamburgerIcon" aria-hidden="true">
+      <span class="hamburgerLine"></span>
+      <span class="hamburgerLine"></span>
+      <span class="hamburgerLine"></span>
+    </span>
+  </button>
+  <ul class="list" id="primary-menu">
+    {
+      items.map((menu) => {
+        const isActive =
+          menu.link === "/" ? pathname === "/" : pathname.startsWith(menu.link);
+        const isExternal = /^https?:\/\//.test(menu.link);
+
+        return (
+          <li class="item">
+            <a
+              class:list={["link", { active: isActive }]}
+              href={menu.link}
+              aria-current={isActive ? "page" : undefined}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+            >
+              {menu.name}
+            </a>
+            {isExternal && (
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="externalIcon"
+                aria-hidden="true"
+              >
+                <path d="M13 5H19V11" />
+                <path d="M19 5L5 19" />
+              </svg>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("primary-menu");
+
+  if (toggle instanceof HTMLButtonElement && menu) {
+    const isMobile = () => window.matchMedia("(width <= 40rem)").matches;
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("menu-open", open);
+      menu.toggleAttribute("inert", isMobile() && !open);
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    const mediaQuery = window.matchMedia("(width > 40rem)");
+    const handleViewportChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setOpen(false);
+      }
+    };
+
+    setOpen(false);
+    mediaQuery.addEventListener("change", handleViewportChange);
+  }
+</script>
+
+<style is:global>
+  body.menu-open {
+    overflow: hidden;
+  }
+</style>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.25rem;
+  }
+
+  .link {
+    padding-block: 0.25rem;
+    font-size: 0.875rem;
+    display: inline-block;
+  }
+
+  .link::after {
+    display: block;
+    width: 85%;
+    height: 0.0625rem;
+    margin-inline: auto;
+    content: "";
+    background: var(--foreground);
+    transform-origin: center;
+    scale: 0;
+    translate: 0 -0.125rem;
+    transition: scale 0.2s;
+  }
+
+  .link:hover::after {
+    scale: 1;
+  }
+
+  .link.active::after {
+    scale: 1;
+  }
+
+  .externalIcon {
+    translate: 0.05rem 0.05rem;
+    scale: 0.9;
+  }
+
+  @media screen and (width <= 40rem) {
+    .hamburger {
+      position: relative;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin: -0.75rem;
+      padding: 0;
+      color: var(--foreground);
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .hamburger:focus-visible {
+      outline: 0.125rem solid var(--foreground);
+      outline-offset: 0.125rem;
+    }
+
+    .hamburgerIcon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 1.125rem;
+      height: 0.75rem;
+    }
+
+    .hamburgerLine {
+      display: block;
+      width: 100%;
+      height: 0.09375rem;
+      background: currentColor;
+      border-radius: 999px;
+      transform-origin: center;
+      transition:
+        translate 0.2s ease,
+        rotate 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .hamburger[aria-expanded="true"] .hamburgerLine:nth-child(1) {
+      translate: 0 0.328125rem;
+      rotate: 45deg;
+    }
+
+    .hamburger[aria-expanded="true"] .hamburgerLine:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger[aria-expanded="true"] .hamburgerLine:nth-child(3) {
+      translate: 0 -0.328125rem;
+      rotate: -45deg;
+    }
+
+    .list {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 5rem 1.5rem 2rem;
+      background: var(--background);
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
+
+    .hamburger[aria-expanded="true"] + .list {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .link {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hamburgerLine,
+    .list,
+    .link::after {
+      transition: none;
+    }
+  }
+</style>
